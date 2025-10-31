@@ -1,84 +1,96 @@
 <!doctype html>
 <html lang="fr">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Remboursement de dettes — Connexion & Simulateur</title>
-  <style>
-    :root{
-      --bg:#f6f8fb; --card:#ffffff; --accent:#2563eb; --muted:#6b7280; --success:#10b981;
-      font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
-    }
-    *{box-sizing:border-box}
-    body{margin:0;background:linear-gradient(180deg,var(--bg),#eef4ff);color:#0f172a}
-    .centered{display:flex;align-items:center;justify-content:center;height:100vh;padding:20px}
-    .card{background:var(--card);border-radius:14px;padding:24px;box-shadow:0 6px 20px rgba(16,24,40,0.06);width:100%;max-width:420px}
-    h1{margin-top:0;font-size:22px;text-align:center}
-    label{display:block;font-size:14px;margin-bottom:6px;color:var(--muted)}
-    input[type=email],input[type=password]{width:100%;padding:10px 12px;border:1px solid #e5e7eb;border-radius:8px;font-size:15px;margin-bottom:14px}
-    .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:10px 14px;border-radius:10px;border:0;background:var(--accent);color:white;font-weight:600;cursor:pointer;width:100%;}
-    .small{text-align:center;font-size:13px;color:var(--muted);margin-top:10px}
-    .small a{color:var(--accent);text-decoration:none}
-    .small a:hover{text-decoration:underline}
-    .hidden{display:none}
-    /* simulateur style */
-    header{padding:20px;display:flex;align-items:center;justify-content:space-between;background:white;box-shadow:0 2px 6px rgba(0,0,0,0.05)}
-    .container{max-width:1100px;margin:40px auto;padding:0 20px}
-  </style>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Remboursement de dettes — Connexion & Simulateur</title>
+<style>
+:root{
+--bg:#f6f8fb; --card:#ffffff; --accent:#2563eb; --muted:#6b7280; --success:#10b981;
+font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+}
+*{box-sizing:border-box}
+body{margin:0;background:linear-gradient(180deg,var(--bg),#eef4ff);color:#0f172a}
+.centered{display:flex;align-items:center;justify-content:center;height:100vh;padding:20px;position:relative}
+.card{background:var(--card);border-radius:14px;padding:24px;box-shadow:0 6px 20px rgba(16,24,40,0.06);width:100%;max-width:420px}
+h1{margin-top:0;font-size:22px;text-align:center}
+label{display:block;font-size:14px;margin-bottom:6px;color:var(--muted)}
+input[type=email],input[type=password]{width:100%;padding:10px 12px;border:1px solid #e5e7eb;border-radius:8px;font-size:15px;margin-bottom:14px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:10px 14px;border-radius:10px;border:0;background:var(--accent);color:white;font-weight:600;cursor:pointer;width:100%;}
+.small{text-align:center;font-size:13px;color:var(--muted);margin-top:10px}
+.small a{color:var(--accent);text-decoration:none}
+.small a:hover{text-decoration:underline}
+.hidden{display:none}
+/* simulateur style */
+header{padding:20px;display:flex;align-items:center;justify-content:space-between;background:white;box-shadow:0 2px 6px rgba(0,0,0,0.05)}
+.container{max-width:1100px;margin:40px auto;padding:0 20px}
+/* logo */
+.logo-google{position:absolute;top:20px;right:20px;width:60px;height:60px;border-radius:50%;box-shadow:0 2px 6px rgba(0,0,0,0.2)}
+</style>
 </head>
 <body>
-  <div id="loginScreen" class="centered">
-    <div class="card">
-      <h1>Connexion</h1>
-      <form id="loginForm" onsubmit="return false;">
-        <label for="email">Adresse e-mail</label>
-        <input type="email" id="email" placeholder="exemple@mail.com" required />
+<div id="loginScreen" class="centered">
+<!-- Logo Google affiché en haut à droite -->
+<img src="logo google.jpeg" alt="Logo Google" class="logo-google" />
+<div class="card">
+<h1>Connexion</h1>
+<form id="loginForm" onsubmit="return false;">
+<label for="email">Adresse e-mail</label>
+<input type="email" id="email" placeholder="exemple@mail.com" required />
 
-        <label for="password">Mot de passe</label>
-        <input type="password" id="password" placeholder="Votre mot de passe" required />
 
-        <button type="submit" class="btn" id="loginBtn">Se connecter</button>
-        <div class="small">Mot de passe oublié ? <a href="#" id="forgotLink">Cliquez ici</a></div>
-      </form>
-    </div>
-  </div>
+<label for="password">Mot de passe</label>
+<input type="password" id="password" placeholder="Votre mot de passe" required />
 
-  <div id="mainApp" class="hidden">
-    <header>
-      <h2>Remboursement de Dettes</h2>
-      <button id="logoutBtn" class="btn" style="width:auto;padding:8px 12px;font-size:14px;">Déconnexion</button>
-    </header>
 
-    <div class="container">
-      <h3>Bienvenue dans l'espace de confidentialité Google'</h3>
-      <p>Cette section contiendra vos informations de connexions et de suivis.</p>
-    </div>
-  </div>
+<button type="submit" class="btn" id="loginBtn">Se connecter</button>
+<div class="small">Mot de passe oublié ? <a href="#" id="forgotLink">Cliquez ici</a></div>
+</form>
+</div>
+</div>
 
-  <script>
-    const loginScreen=document.getElementById('loginScreen');
-    const mainApp=document.getElementById('mainApp');
-    const forgotLink=document.getElementById('forgotLink');
 
-    document.getElementById('loginBtn').addEventListener('click',()=>{
-      const email=document.getElementById('email').value.trim();
-      const pass=document.getElementById('password').value.trim();
-      if(!email||!pass){alert('Veuillez saisir vos identifiants.');return;}
-      loginScreen.classList.add('hidden');
-      mainApp.classList.remove('hidden');
-    });
+<div id="mainApp" class="hidden">
+<header>
+<h2>Remboursement de Dettes</h2>
+<button id="logoutBtn" class="btn" style="width:auto;padding:8px 12px;font-size:14px;">Déconnexion</button>
+</header>
 
-    document.getElementById('logoutBtn').addEventListener('click',()=>{
-      mainApp.classList.add('hidden');
-      loginScreen.classList.remove('hidden');
-      document.getElementById('password').value='';
-    });
 
-    forgotLink.addEventListener('click',()=>{
-      const email=prompt('Entrez votre adresse e-mail pour réinitialiser le mot de passe :');
-      if(email){alert('Un lien de réinitialisation a été envoyé à '+email+' (simulation).');}
-    });
-  </script>
+<div class="container">
+<h3>Bienvenue dans l'espace de confidentialité Google</h3>
+<p>Cette section contiendra vos informations de connexions et de suivis.</p>
+</div>
+</div>
+
+
+<script>
+const loginScreen=document.getElementById('loginScreen');
+const mainApp=document.getElementById('mainApp');
+const forgotLink=document.getElementById('forgotLink');
+
+
+document.getElementById('loginBtn').addEventListener('click',()=>{
+const email=document.getElementById('email').value.trim();
+const pass=document.getElementById('password').value.trim();
+if(!email||!pass){alert('Veuillez saisir vos identifiants.');return;}
+loginScreen.classList.add('hidden');
+mainApp.classList.remove('hidden');
+});
+
+
+document.getElementById('logoutBtn').addEventListener('click',()=>{
+mainApp.classList.add('hidden');
+loginScreen.classList.remove('hidden');
+document.getElementById('password').value='';
+});
+
+
+forgotLink.addEventListener('click',()=>{
+const email=prompt('Entrez votre adresse e-mail pour réinitialiser le mot de passe :');
+if(email){alert('Un lien de réinitialisation a été envoyé à '+email+' (simulation).');}
+});
+</script>
 </body>
 </html>
 
